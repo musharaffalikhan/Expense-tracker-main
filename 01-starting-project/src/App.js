@@ -1,8 +1,10 @@
 import { useContext } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
+import UpdateProfile from "./components/StartingPage/UpdateProfile";
 import AuthPage from "./pages/AuthPage";
 import HomePage from "./pages/HomePage";
+import LoginPassChange from "./pages/LoginPassChange";
 import ProfilePage from "./pages/ProfilePage";
 import AuthContext from "./store/auth-context";
 
@@ -19,9 +21,16 @@ function App() {
             <AuthPage />
           </Route>
         )}
-        <Route path="/profile">
+        <Route path="/updateprof">
+          {authCtx.isLoggedIn && <UpdateProfile />}
+          {!authCtx.isLoggedIn && <Redirect to="/" />}
+        </Route>
+        <Route to="/changepass">
           {authCtx.isLoggedIn && <ProfilePage />}
-          {!authCtx.isLoggedIn && <Redirect to="/auth" />}
+          {!authCtx.isLoggedIn && <Redirect to="/" />}
+        </Route>
+        <Route path="/changeloginpass">
+         {!authCtx.isLoggedIn && <LoginPassChange />}
         </Route>
         <Route path="*">
           <Redirect to="/" />

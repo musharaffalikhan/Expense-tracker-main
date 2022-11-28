@@ -1,5 +1,5 @@
 import React, { useContext, useRef, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import AuthContext from "../../store/auth-context";
 import classes from "./AuthForm.module.css";
 
@@ -53,7 +53,7 @@ const AuthForm = () => {
         }
       })
       .then((data) => {
-        
+        console.log(data.idToken);
         authCtx.login(data.idToken);
         history.replace("/");
       })
@@ -61,7 +61,6 @@ const AuthForm = () => {
         alert(err.message);
       });
   };
-
   return (
     <section className={classes.auth}>
       <h1>{isLogin ? "LOGIN" : "SIGN UP"}</h1>
@@ -85,6 +84,15 @@ const AuthForm = () => {
             <input type="text" id="password" required />
           </div>
         )}
+        <nav>
+          {isLogin && (
+            <div className={classes.actions}>
+              <Link className={classes["toggle-pass"]} to='/changeloginpass'>
+                Forgot Password?
+              </Link>
+            </div>
+          )}
+        </nav>
         <div className={classes.actions}>
           {!isLoading && (
             <button>{isLogin ? "Login" : "Create Account"}</button>
