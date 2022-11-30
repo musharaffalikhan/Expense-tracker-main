@@ -44,9 +44,9 @@ const AuthForm = () => {
           return res.json();
         } else {
           return res.json().then((data) => {
-            let errorMessage = "Authentication failed";
+            // let errorMessage = "Authentication failed";
             // if (data && data.error && data.error.message) {
-            //   errorMessage = data.error.message;
+            let errorMessage = data.error.message;
             // }
             throw new Error(errorMessage);
           });
@@ -87,7 +87,7 @@ const AuthForm = () => {
         <nav>
           {isLogin && (
             <div className={classes.actions}>
-              <Link className={classes["toggle-pass"]} to='/changeloginpass'>
+              <Link className={classes["toggle-pass"]} to="/changeloginpass">
                 Forgot Password?
               </Link>
             </div>

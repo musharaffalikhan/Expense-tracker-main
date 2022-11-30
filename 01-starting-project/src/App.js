@@ -3,6 +3,7 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 import UpdateProfile from "./components/StartingPage/UpdateProfile";
 import AuthPage from "./pages/AuthPage";
+import Errorpage from "./pages/Errorpage";
 import HomePage from "./pages/HomePage";
 import LoginPassChange from "./pages/LoginPassChange";
 import ProfilePage from "./pages/ProfilePage";
@@ -31,9 +32,6 @@ function App() {
         </Route>
         <Route path="/changeloginpass">
          {!authCtx.isLoggedIn && <LoginPassChange />}
-        </Route>
-        <Route path="*">
-          <Redirect to="/" />
         </Route>
       </Switch>
     </Layout>

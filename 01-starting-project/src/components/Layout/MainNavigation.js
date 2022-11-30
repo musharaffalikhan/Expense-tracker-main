@@ -34,7 +34,7 @@ const MainNavigation = () => {
       console.log(data);
       alert("The link has been send to your email");
     } catch (error) {
-      console.log(error);
+      alert(error.response.data.error.message);
     }
   };
   return (
@@ -63,17 +63,17 @@ const MainNavigation = () => {
           )}
           {isLoggedIn && (
             <li>
-              <button onClick={logoutHandler}>LOGOUT</button>
-            </li>
-          )}
-          {isLoggedIn && (
-            <li>
               {!isLoading && (
                 <button type="button" onClick={emailHandler}>
                   Verify email
                 </button>
               )}
               {isLoading && <p>sending req...</p>}
+            </li>
+          )}
+          {isLoggedIn && (
+            <li>
+              <button onClick={logoutHandler}>LOGOUT</button>
             </li>
           )}
         </ul>
