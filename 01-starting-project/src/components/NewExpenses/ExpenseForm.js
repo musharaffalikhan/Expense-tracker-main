@@ -6,15 +6,15 @@ const ExpenseForm = (props) => {
   const [enteredDescription, setEnteredDescription] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
 
-  const titleChangeHandler = event =>{
+  const titleChangeHandler = (event) => {
     setEnteredTitle(event.target.value);
-  }
-  const descriptionChangeHandler = event =>{
+  };
+  const descriptionChangeHandler = (event) => {
     setEnteredDescription(event.target.value);
-  }
-  const amountChangeHandler = event =>{
+  };
+  const amountChangeHandler = (event) => {
     setEnteredAmount(event.target.value);
-  }
+  };
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -23,21 +23,34 @@ const ExpenseForm = (props) => {
       description: enteredDescription,
       amount: enteredAmount,
     };
+
     props.onSaveExpense(expenseData);
-    setEnteredTitle('');
-    setEnteredDescription('');
-    setEnteredAmount('');
+    setEnteredTitle("");
+    setEnteredDescription("");
+    setEnteredAmount("");
   };
   return (
     <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label htmlFor="title">Title</label>
-          <input type="text" id="title" onChange={titleChangeHandler} value={enteredTitle} />
+          <input
+            type="text"
+            id="title"
+            onChange={titleChangeHandler}
+            value={enteredTitle}
+            required
+          />
         </div>
         <div className="new-expense__control">
           <label htmlFor="description">Description</label>
-          <input type="text" id="description" onChange={descriptionChangeHandler} value={enteredDescription} />
+          <input
+            type="text"
+            id="description"
+            onChange={descriptionChangeHandler}
+            value={enteredDescription}
+            required
+          />
         </div>
         <div className="new-expense__control">
           <label htmlFor="amount">Amount</label>
@@ -48,6 +61,7 @@ const ExpenseForm = (props) => {
             step="0.01"
             onChange={amountChangeHandler}
             value={enteredAmount}
+            required
           />
         </div>
       </div>

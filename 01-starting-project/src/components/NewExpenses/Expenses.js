@@ -1,8 +1,10 @@
+
 import React from "react";
 import ExpenseItem from "./ExpenseItem";
 import classes from "./Expenses.module.css";
 
 const Expenses = (props) => {
+  
   return (
     <div className={classes.expenses}>
       {props.items.map((expense) => (

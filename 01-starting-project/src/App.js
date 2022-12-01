@@ -3,7 +3,6 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 import UpdateProfile from "./components/StartingPage/UpdateProfile";
 import AuthPage from "./pages/AuthPage";
-import Errorpage from "./pages/Errorpage";
 import HomePage from "./pages/HomePage";
 import LoginPassChange from "./pages/LoginPassChange";
 import ProfilePage from "./pages/ProfilePage";
@@ -14,14 +13,15 @@ function App() {
   return (
     <Layout>
       <Switch>
-        <Route path="/" exact>
-          <HomePage />
-        </Route>
         {!authCtx.isLoggedIn && (
-          <Route path="/auth">
+          <Route path="/auth" exact>
             <AuthPage />
           </Route>
         )}
+        <Route path="/">
+          {authCtx.isLoggedIn && <HomePage />}
+          {!authCtx.isLoggedIn && <Redirect to="/auth" />}
+        </Route>
         <Route path="/updateprof">
           {authCtx.isLoggedIn && <UpdateProfile />}
           {!authCtx.isLoggedIn && <Redirect to="/" />}
@@ -31,7 +31,7 @@ function App() {
           {!authCtx.isLoggedIn && <Redirect to="/" />}
         </Route>
         <Route path="/changeloginpass">
-         {!authCtx.isLoggedIn && <LoginPassChange />}
+          <LoginPassChange />
         </Route>
       </Switch>
     </Layout>
