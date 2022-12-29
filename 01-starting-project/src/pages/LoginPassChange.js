@@ -1,9 +1,9 @@
 import React from "react";
 
-import ChangeLoginPass from "../components/Profile/ChangeLoginPass";
+import ProfileForm from "../components/Profile/ProfileForm";
 
 const LoginPassChange = () => {
-  return <ChangeLoginPass />;
+  return <ProfileForm />;
 };
 
 export default LoginPassChange;

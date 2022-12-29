@@ -85,13 +85,13 @@ const AuthForm = () => {
           </div>
         )}
         <nav>
-          {isLogin && (
+          {/* {isLogin && (
             <div className={classes.actions}>
-              <Link className={classes["toggle-pass"]} to="/changeloginpass">
+              <a className={classes["toggle-pass"]} href="/changepass">
                 Forgot Password?
-              </Link>
+              </a>
             </div>
-          )}
+          )} */}
         </nav>
         <div className={classes.actions}>
           {!isLoading && (
