@@ -22,10 +22,9 @@ function App() {
           {authCtx.isLoggedIn && <HomePage />}
           {!authCtx.isLoggedIn && <Redirect to="/auth" />}
         </Route>
-        <Route path="/updateprof">
+        {/* <Route path="/updateprof">
           {authCtx.isLoggedIn && <UpdateProfile />}
-          {!authCtx.isLoggedIn && <Redirect to="/" />}
-        </Route>
+        </Route> */}
         <Route to="/changepass">
           {authCtx.isLoggedIn && <ProfilePage />}
           {!authCtx.isLoggedIn && <Redirect to="/" />}

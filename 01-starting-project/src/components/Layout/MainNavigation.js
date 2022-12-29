@@ -51,16 +51,12 @@ const MainNavigation = () => {
               <Link to="/auth">LOGIN</Link>
             </li>
           )}
-          {isLoggedIn && (
-            <li>
-              <Link to="/changepass">CHANGE PASSWORD</Link>
-            </li>
-          )}
-          {isLoggedIn && (
+        
+          {/* {isLoggedIn && (
             <li>
               <Link to="/updateprof">UPDATE PROFILE</Link>
             </li>
-          )}
+          )} */}
           {isLoggedIn && (
             <li>
               {!isLoading && (
